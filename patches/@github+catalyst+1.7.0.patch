@@ -1,0 +1,13 @@
+diff --git a/node_modules/@github/catalyst/lib/register.js b/node_modules/@github/catalyst/lib/register.js
+index 8a26592..320b24e 100644
+--- a/node_modules/@github/catalyst/lib/register.js
++++ b/node_modules/@github/catalyst/lib/register.js
+@@ -8,6 +8,8 @@ import { dasherize } from './dasherize.js';
+  */
+ export function register(classObject) {
+     const name = dasherize(classObject.name).replace(/-element$/, '');
++
++    console.log(`Registering custom element: ${name}`);
+     try {
+         window.customElements.define(name, classObject);
+         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
