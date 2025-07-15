@@ -11,12 +11,17 @@ This is a bug reproduction project that demonstrates the use of Primer's action-
    npx playwright install
    ```
 
-2. Start the development server:
+2. Run tests with `npm test`. Observe the following error:
 
-   ```bash
-   npm run dev
-   ```
+```
+thread '<unnamed>' panicked at crates/rolldown_common/src/types/symbol_ref_db.rs:216:7:
+canonical name not found for SymbolRef { owner: 0, symbol: SymbolId(2) }, original_name: "__name"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 
-3. Open your browser to `http://localhost:3000` to see the action-list demo. In this setup, you can see `Registering custom element: action-list` which is _correct_. The class names are being preserved.
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯ Unhandled Rejection ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Error: Panic in async function
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'GenericFailure' }
+```
 
-4. Run tests with `npm test`. In this environment you see `Registering custom element: action-list-element2` which is _incorrect_. The class names are not being preserved, so the custom element is not registered correctly and the test fails.
+3. Remove `keepNames: true` in `vite.config.ts` and run tests again. The error no longer occurs.
