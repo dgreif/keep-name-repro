@@ -9,8 +9,7 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
-    "@primer/view-components": "^0.43.5",
-    "rolldown-vite": "^7.0.9"
+    "@primer/view-components": "^0.43.5"
   },
   "devDependencies": {
     "@vitest/browser": "^3.2.4",
@@ -18,6 +17,10 @@
     "oxlint": "^1.6.0",
     "patch-package": "^8.0.0",
     "playwright": "^1.54.1",
-    "vitest": "^3.2.4"
+    "vitest": "^3.2.4",
+    "vite": "npm:rolldown-vite@latest"
+  },
+  "overrides": {
+    "vite": "npm:rolldown-vite@latest"
   }
 }
