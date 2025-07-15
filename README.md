@@ -8,6 +8,7 @@ This is a bug reproduction project that demonstrates the use of Primer's action-
 
    ```bash
    npm install
+   npx playwright install
    ```
 
 2. Start the development server:
